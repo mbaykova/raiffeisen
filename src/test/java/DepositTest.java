@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
@@ -25,6 +26,7 @@ public class DepositTest extends BaseTest {
 		testData.put("Отделение", "Москва");
 
 		WebDriver driver = getDriver();
+		driver.get("https://www.raiffeisen.ru/");
 		acceptRegion();
 		click(driver.findElement(By.xpath("//ul[@class='main-menu']//a[text()='Вклады']")));
 		click(driver.findElement(By.xpath("//*[text()='Накопительные счета']")));
@@ -47,10 +49,12 @@ public class DepositTest extends BaseTest {
 			"732, дополнительный офис «Отделение «Бескудниково»");
 
 		Assert.assertTrue("Не найден элмент - Осталось заполнить: Телефон",
-			isElementPresent(driver.findElement(By.xpath("//div[@class='page-item__invalid'][.//div[text()='Осталось заполнить поля:']]//span[text()='Телефон']"))));
+			isElementPresent(By.xpath("//div[@class='page-item__invalid'][.//div[text()='Осталось заполнить поля:']]//span[text()='Телефон']")));
 
 
 	}
+
+
 
 
 }
