@@ -1,7 +1,10 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
@@ -19,7 +22,7 @@ public class DepositTest extends BaseTest {
 		testData.put("Фамилия", "Иванов");
 		testData.put("Имя", "Иван");
 		testData.put("Отчество", "Иванович");
-		testData.put("Дата рождения", "12.12.1992");
+		testData.put("Дата рождения", "12121992");
 		testData.put("Телефон", "9101234567");
 		testData.put("Город", "Москва");
 		testData.put("Отделение", "Москва");
@@ -35,8 +38,12 @@ public class DepositTest extends BaseTest {
 		fillField(driver.findElement(By.xpath("//*[text()='Фамилия']/parent::div/input")), testData.get("Фамилия"));
 		fillField(driver.findElement(By.xpath("//*[text()='Имя']/parent::div/input")), testData.get("Имя"));
 		fillField(driver.findElement(By.xpath("//*[text()='Отчество']/parent::div/input")), testData.get("Отчество"));
-		fillField(driver.findElement(By.xpath("//*[text()='Дата рождения']/parent::div/input")), testData.get("Дата рождения"));
+
+		fillDate(driver.findElement(By.xpath("//*[text()='Дата рождения']/parent::div/input")), testData.get("Дата рождения"));
 		fillField(driver.findElement(By.xpath("//*[text()='Телефон']/parent::div/input")), testData.get("Телефон"));
+
+		Assert.assertEquals("12.12.1992",
+			driver.findElement(By.xpath("//*[text()='Дата рождения']/parent::div/input")).getAttribute("value"));
 
 		Assert.assertTrue("Кнопка - Выслать код не активна",
 			driver.findElement(By.xpath("//*[text()='Выслать код']")).isEnabled());
@@ -47,9 +54,14 @@ public class DepositTest extends BaseTest {
 			"732, дополнительный офис «Отделение «Бескудниково»");
 
 		Assert.assertTrue("Не найден элмент - Осталось заполнить: Телефон",
-			isElementPresent(driver.findElement(By.xpath("//div[@class='page-item__invalid'][.//div[text()='Осталось заполнить поля:']]//span[text()='Телефон']"))));
+			isElementPresent(By.xpath("//div[@class='page-item__invalid'][.//div[text()='Осталось заполнить поля:']]//span[text()='Телефон']")));
 
 
+	}
+
+	public void fillDate(WebElement element, String value){
+			element.sendKeys(value);
+			element.click();
 	}
 
 
