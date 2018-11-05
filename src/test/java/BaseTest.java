@@ -23,10 +23,9 @@ public class BaseTest {
 		System.setProperty("webdriver.chrome.driver", "drv/chromedriver.exe");
 		driver = new ChromeDriver();
 		wait  = new WebDriverWait(driver, 60);
-		driver.get("https://www.raiffeisen.ru/");
-		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
 	}
 
 	@After
@@ -67,9 +66,6 @@ public class BaseTest {
 		}
 	}
 
-	public void acceptRegion() {
-		click(getDriver().findElement(By.xpath("//*[text()='Да']")));
-	}
 
 
 }
