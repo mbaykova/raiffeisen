@@ -29,8 +29,8 @@ public class DepositTest extends BaseTest {
 		testData.put("Отделение", "732, дополнительный офис «Отделение «Бескудниково»");
 
 		HashMap<String, String> testCheckData = new HashMap<>();
-		testCheckData.put("Телефон", "12.12.1992");
-		testCheckData.put("Дата рождения", "+7 (910) 123-45-67");
+		testCheckData.put("Дата рождения", "12.12.1992");
+		testCheckData.put("Телефон", "+7 (910) 123-45-67");
 
 		WebDriver driver = getDriver();
 		driver.get("https://www.raiffeisen.ru/");
@@ -50,7 +50,7 @@ public class DepositTest extends BaseTest {
 
 		Assert.assertEquals(testCheckData.get("Дата рождения"),
 			driver.findElement(By.xpath("//*[text()='Дата рождения']/parent::div/input")).getAttribute("value"));
-		Assert.assertEquals("Телефон",
+		Assert.assertEquals(testCheckData.get("Телефон"),
 			driver.findElement(By.xpath("//*[text()='Телефон']/parent::div/input")).getAttribute("value"));
 
 		Assert.assertTrue("Кнопка - Выслать код не активна",
