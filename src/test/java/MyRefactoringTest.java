@@ -1,6 +1,5 @@
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import ru.aplana.demo.pages.DepositListPage;
 import ru.aplana.demo.pages.DepositPage;
 import ru.aplana.demo.pages.MainPage;
