@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,7 @@ public class UploadTest extends BaseTest {
 
 
 	@Test
+	@Ignore
 	public void testUpload() {
 		WebDriver driver = getDriver();
 		driver.get("https://www.freeformatter.com/xml-formatter.html");

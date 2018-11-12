@@ -1,4 +1,5 @@
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -18,6 +19,7 @@ public class DepositTest extends BaseTest {
 
 
 	@Test
+	@Ignore
 	public void testDeposit() {
 		HashMap<String, String> testData = new HashMap<>();
 		testData.put("Фамилия", "Иванов");

@@ -21,10 +21,10 @@ import java.util.List;
  * Created by Maria on 06.05.2017.
  */
 public class BasePageObject {
-	WebDriverWait wait  = new WebDriverWait(BaseSteps.getWebDriver(), 60);
+	WebDriverWait wait  = new WebDriverWait(DriverManager.getDriver(), 60);
 
 	public BasePageObject() {
-		PageFactory.initElements(BaseSteps.getWebDriver(), this);
+		PageFactory.initElements(DriverManager.getDriver(), this);
 	}
 
 	public void fillField(WebElement field, String value){
@@ -52,7 +52,7 @@ public class BasePageObject {
 	}
 
 	public void scrollAndClick(WebElement element) {
-		JavascriptExecutor js = (JavascriptExecutor) BaseSteps.getWebDriver();
+		JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
 		js.executeScript("return arguments[0].scrollIntoView(false);", element);
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
