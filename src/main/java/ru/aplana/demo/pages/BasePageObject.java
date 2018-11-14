@@ -35,6 +35,7 @@ public class BasePageObject {
 		js.executeScript("return arguments[0].style.border='1px solid black';", field);
 	}
 
+
 	public void click(WebElement element){
 		wait.until(ExpectedConditions.visibilityOf(element)).click();
 	}

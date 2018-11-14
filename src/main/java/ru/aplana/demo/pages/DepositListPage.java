@@ -14,17 +14,9 @@ public class DepositListPage extends BasePageObject {
 
 
 	@FindBy(xpath = "//div[@class='b-card__content']")
-	List<WebElement> depositCollection;
+	public List<WebElement> depositCollection;
 
-	public void openDeposit(String depositName){
-		for (WebElement item : depositCollection ){
-			if (item.findElement(By.xpath(".//p")).getText().contains(depositName)){
-				scrollAndClick(item.findElement(By.xpath(".//*[text()='Открыть счет']")));
-				return;
-			}
-		}
-		Assert.fail("Не найден элмент коллеции - " + depositName);
-	}
+
 
 
 }
