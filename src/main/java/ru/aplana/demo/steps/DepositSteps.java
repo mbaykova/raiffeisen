@@ -29,10 +29,4 @@ public class DepositSteps {
         depositPage.click(name);
     }
 
-
-
-
-
-
-
 }

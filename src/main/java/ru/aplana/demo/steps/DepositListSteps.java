@@ -23,7 +23,4 @@ public class DepositListSteps {
         Assert.fail("Не найден элмент коллеции - " + depositName);
     }
 
-    public void click(WebElement element){
-        depositListPage.click(element);
-    }
 }
