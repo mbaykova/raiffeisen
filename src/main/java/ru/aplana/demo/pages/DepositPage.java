@@ -53,21 +53,28 @@ public class DepositPage extends BasePageObject {
 	public WebElement sentCode;
 
 	@FindBy(xpath = "//div[@class='page-item__invalid'][.//div[text()='Осталось заполнить поля:']]//span[text()='Телефон']")
-	@FieldName(name = "Осталось заполнить поле - Телефон")
+	@FieldName(name = "Осталось заполнить Телефон")
 	public WebElement notFilledField;
 
 
+
+	@FindBy(xpath = "//*[contains(text(),'подтверждаю')]/..")
+	@FieldName(name = "Я подтверждаю")
+	public WebElement acceptCheckBox;
+
+
+
 	public void fillField(String name, String value) throws Exception {
-		WebElement element = getFiled(name);
+		WebElement element = getField(name);
 		fillField(element, value);
 	}
 
 	public void click(String name) throws Exception {
-		WebElement element = getFiled(name);
+		WebElement element = getField(name);
 		click(element);
 	}
 
-	public WebElement getFiled(String name) throws Exception {
+	public WebElement getField(String name) throws Exception {
 		Class example = Class.forName("ru.aplana.demo.pages.DepositPage");
 		List<Field> fields = Arrays.asList(example.getFields());
 		for (Field field : fields){
