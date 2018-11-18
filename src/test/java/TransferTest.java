@@ -66,11 +66,7 @@ public class TransferTest extends BaseTest {
 
 	}
 
-	@Override
-	public void selectInput(WebElement element, String value) {
-		element.click();
-		element.findElement(By.xpath(".//*[contains(text(),'" + value + "')]")).click();
-	}
+
 }
 
 
