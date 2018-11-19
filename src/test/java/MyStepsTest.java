@@ -38,7 +38,7 @@ public class MyStepsTest extends BaseSteps {
 
 
         depositListSteps.openDeposit("На каждый день");
-        depositSteps.click("Оставить заявку");
+//        depositSteps.click("Оставить заявку");
         depositSteps.fillField("Фамилия", testData.get("Фамилия"));
         depositSteps.fillField("Имя", testData.get("Имя"));
         depositSteps.fillField("Отчество", testData.get("Отчество"));
