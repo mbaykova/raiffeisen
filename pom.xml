@@ -7,6 +7,15 @@
     <groupId>ru.aplana.demo</groupId>
     <artifactId>raiffeisen</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <file.encoding>UTF-8</file.encoding>
+        <aspectj.version>1.8.10</aspectj.version>
+        <compiler.version>1.8</compiler.version>
+        <selenium.version>3.8.0</selenium.version>
+        <allure.version>2.7.0</allure.version>
+    </properties>
     <build>
         <plugins>
             <plugin>
@@ -21,12 +30,7 @@
     </build>
 
 
-    <properties>
-        <aspectj.version>1.8.10</aspectj.version>
-        <compiler.version>1.8</compiler.version>
-        <selenium.version>3.8.0</selenium.version>
-        <allure.version>2.7.0</allure.version>
-    </properties>
+
 
     <dependencies>
         <dependency>
