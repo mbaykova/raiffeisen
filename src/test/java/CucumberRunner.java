@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         plugin = {"json:target/cucumber-report.json",
                   "pretty",
                   "html:target/cucumber-reports",
-                  "rerun:rerun.txt"},
+                "ru.aplana.demo.reporter.AllureReporter"},
         tags = {"@web"})
 public class CucumberRunner {
 }
