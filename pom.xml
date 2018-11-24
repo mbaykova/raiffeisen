@@ -35,6 +35,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <file.encoding>UTF-8</file.encoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <aspectj.version>1.8.10</aspectj.version>
         <compiler.version>1.8</compiler.version>
         <selenium.version>3.8.0</selenium.version>
