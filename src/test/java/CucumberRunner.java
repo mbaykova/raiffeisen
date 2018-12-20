@@ -11,7 +11,6 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = {"src/test/resources/"}, glue = {"ru.aplana.demo"},
         plugin = {"json:target/cucumber-report.json",
                   "pretty",
-                "ru.aplana.demo.reporter.AllureReporter"},
-        tags = {"@web"})
+                "ru.aplana.demo.reporter.AllureReporter"})
 public class CucumberRunner {
 }
