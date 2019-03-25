@@ -40,8 +40,8 @@ public class DepositSteps {
 
     @When("выпадающий список \"(.*)\" заполняется значением \"(.*)\"")
     public void selectInput(String field, String value) throws Exception {
-        WebElement element = depositPage.getField(field);
-        depositPage.selectInput(element, value);
+        depositPage.getField(field).click();
+        depositPage.selectInput(depositPage.getField(field), value);
     }
 
     @When("поле \"(.*)\" присутствует")
