@@ -52,7 +52,8 @@ public class BasePageObject {
 
 	public void selectInput(WebElement element, String value) {
 		element.click();
-		element.findElement(By.xpath(".//div[contains(@class,'choices__item')][contains(text(),'" + value + "')]")).click();
+		element.findElement(By.xpath(".//div[contains(@class,'choices__item')][contains(text(),'" + value + "')]|" +
+				".//div[contains(@class,'choices__item')]//*[contains(text(),'" + value + "')]")).click();
 	}
 
 	public void scrollAndClick(WebElement element) {

@@ -3,6 +3,9 @@ package ru.aplana.demo.pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.FindBy;
 import ru.aplana.demo.annotation.FieldName;
 import ru.aplana.demo.util.DriverManager;
@@ -75,15 +78,46 @@ public class DepositPage extends BasePageObject {
 	}
 
 	public WebElement getField(String name) throws Exception {
-		Class example = Class.forName("ru.aplana.demo.pages.DepositPage");
-		List<Field> fields = Arrays.asList(example.getFields());
-		for (Field field : fields){
-			if (field.getAnnotation(FieldName.class).name().equals(name)){
-				return DriverManager.getDriver().findElement(By.xpath(field.getAnnotation(FindBy.class).xpath()));
-			}
+		WebElement element = null;
+		switch (name) {
+			case "Оставить заявку":
+				element = requestBtn;
+				break;
+			case "Фамилия":
+				element = surname;
+				break;
+			case "Имя":
+				element = this.name;
+				break;
+			case "Отчество":
+				element = middleName;
+				break;
+			case "Дата рождения":
+				element = birthDate;
+				break;
+			case "Телефон":
+				element = phone;
+				break;
+			case "Город":
+				element = city;
+				break;
+			case "Отделение банка":
+				element = bank;
+				break;
+			case "Выслать код":
+				element = sentCode;
+				break;
+			case "Осталось заполнить Телефон":
+				element = notFilledField;
+				break;
+			case "Я подтверждаю":
+				element = acceptCheckBox;
+				break;
+			default:
+				Assert.fail("Не объявлен элемент с наименованием " + name);
+				break;
 		}
-		Assert.fail("Не объявлен элемент с наименованием " + name);
-		return null;
+		return element;
 	}
 
 

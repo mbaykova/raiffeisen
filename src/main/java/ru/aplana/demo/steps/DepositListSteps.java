@@ -16,8 +16,8 @@ public class DepositListSteps {
     @When("выбран вклад \"(.*)\"")
     public void openDeposit(String depositName){
         for (WebElement item : depositListPage.depositCollection ){
-            if (item.findElement(By.xpath(".//p")).getText().contains(depositName)){
-                depositListPage.scrollAndClick(item.findElement(By.xpath(".//*[text()='Открыть счет']")));
+            if (item.findElement(By.xpath(".//p[contains(@class,'e-title')]")).getText().contains(depositName)){
+                depositListPage.scrollAndClick(item.findElement(By.xpath(".//*[contains(text(),'Открыть')]")));
                 return;
             }
         }
