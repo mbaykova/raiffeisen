@@ -22,6 +22,10 @@ public class MainPage extends BasePageObject{
 	@FindBy(xpath = "//*[text()='Да']")
 	public WebElement acceptRegion;
 
+	@Override
+	public WebElement getField(String name) throws Exception {
+		return getField(name, "ru.aplana.demo.pages.MainPage");
+	}
 
 
 }

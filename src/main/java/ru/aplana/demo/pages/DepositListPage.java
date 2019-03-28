@@ -17,6 +17,8 @@ public class DepositListPage extends BasePageObject {
 	public List<WebElement> depositCollection;
 
 
-
-
+	@Override
+	public WebElement getField(String name) throws Exception {
+		return getField(name, "ru.aplana.demo.pages.DepositListPage");
+	}
 }

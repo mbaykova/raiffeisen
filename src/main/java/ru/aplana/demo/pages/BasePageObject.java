@@ -8,19 +8,23 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.aplana.demo.annotation.FieldName;
 import ru.aplana.demo.steps.BaseSteps;
 import ru.aplana.demo.util.DriverManager;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.List;
 
 
 /**
  * Created by Maria on 06.05.2017.
  */
-public class BasePageObject {
+public abstract class BasePageObject {
 	WebDriverWait wait  = new WebDriverWait(DriverManager.getDriver(), 60);
 
 	public BasePageObject() {
@@ -60,6 +64,30 @@ public class BasePageObject {
 		js.executeScript("return arguments[0].scrollIntoView(false);", element);
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
+
+	public void fillField(String name, String value) throws Exception {
+		WebElement element = getField(name);
+		fillField(element, value);
+	}
+
+	public void click(String name) throws Exception {
+		WebElement element = getField(name);
+		click(element);
+	}
+
+	public WebElement getField(String name, String className) throws Exception {
+		Class example = Class.forName(className);
+		List<Field> fields = Arrays.asList(example.getFields());
+		for (Field field : fields){
+			if (field.getAnnotation(FieldName.class).name().equals(name)){
+				return DriverManager.getDriver().findElement(By.xpath(field.getAnnotation(FindBy.class).xpath()));
+			}
+		}
+		Assert.fail("Не объявлен элемент с наименованием " + name);
+		return null;
+	}
+
+	public abstract WebElement getField(String name) throws Exception;
 
 }
 
