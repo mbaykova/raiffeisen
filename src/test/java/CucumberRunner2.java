@@ -8,9 +8,9 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = {"src/test/resources/deposit.feature"}, glue = {"ru.aplana.demo"},
+@CucumberOptions(features = {"src/test/resources/deposit1.feature"}, glue = {"ru.aplana.demo"},
         plugin = {"json:target/cucumber-report.json",
                   "pretty",
                 "ru.aplana.demo.reporter.AllureReporter"})
-public class CucumberRunner {
+public class CucumberRunner2 {
 }

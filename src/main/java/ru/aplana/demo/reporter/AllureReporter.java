@@ -18,13 +18,13 @@ public class AllureReporter extends io.qameta.allure.cucumberjvm.AllureCucumberJ
     @Override
     public void result(Result result) {
         if (!result.getStatus().equals("passed") && !result.getStatus().equals("skipped")) {
-            takeScreenshot();
+            takeScreenshot("Скриншот ошибки");
         }
         super.result(result);
     }
 
-    @Attachment(type = "image/png", value = "Скриншот в момент ошибки")
-    public static byte[] takeScreenshot() {
+    @Attachment(type = "image/png", value = "{0}")
+    public static byte[] takeScreenshot(String name) {
         return ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 

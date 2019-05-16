@@ -1,6 +1,7 @@
 package ru.aplana.demo.steps;
 
 import cucumber.api.java.en.When;
+import cucumber.api.java.ru.Когда;
 import ru.aplana.demo.pages.MainPage;
 
 /**
@@ -10,7 +11,7 @@ public class MainSteps {
 
     MainPage mainPage = new MainPage();
 
-    @When("выбран пункт меню \"(.*)\"")
+    @Когда("выбран пункт меню \"(.*)\"")
     public void selectMenuItem(String itemName){
         mainPage.selectMenuItem(mainPage.mainMenu, itemName);
     }
