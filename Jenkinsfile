@@ -6,8 +6,25 @@ node('master') {
     }
 
     stage('Run tests') {
-            withMaven(maven: 'Maven3') {
-                    sh 'mvn clean install'
-            }
+        try{
+                 withMaven(maven: 'Maven3') {
+                                sh 'mvn clean install'
+                        }
+        }  catch (e) {
+                     currentBuild.result = 'FAILURE'
+                     throw e
+         }finally {
+             stage('Reports') {
+                                allure([
+                                    includeProperties: false,
+                                    jdk: '',
+                                    properties: [],
+                                    reportBuildPolicy: 'ALWAYS',
+                                    results: [[path: 'target/allure-results']]
+                                ])
+                            }
+         }
+
     }
+
 }
