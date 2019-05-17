@@ -1,127 +1,56 @@
 jenkins:
-  agentProtocols:
-  - "JNLP4-connect"
-  - "Ping"
-  authorizationStrategy:
-    loggedInUsersCanDoAnything:
-      allowAnonymousRead: false
-  crumbIssuer:
-    standard:
-      excludeClientIPFromCrumb: false
-  disableRememberMe: false
-  markupFormatter: "plainText"
-  mode: NORMAL
-  myViewsTabBar: "standard"
-  numExecutors: 2
-  primaryView:
-    all:
-      name: "all"
-  projectNamingStrategy: "standard"
-  quietPeriod: 5
-  remotingSecurity:
-    enabled: true
-  scmCheckoutRetryCount: 0
-  securityRealm:
-    local:
-      allowsSignup: false
-      enableCaptcha: false
-      users:
-      - id: "admin"
-  slaveAgentPort: 50000
-  updateCenter:
-    sites:
-    - id: "default"
-      url: "https://updates.jenkins.io/update-center.json"
-  views:
-  - all:
-      name: "all"
-  viewsTabBar: "standard"
-security:
-  apiToken:
-    creationOfLegacyTokenEnabled: false
-    tokenGenerationOnCreationEnabled: false
-    usageStatisticsEnabled: true
-  downloadSettings:
-    useBrowser: false
-  sSHD:
-    port: -1
-unclassified:
-  bitbucketEndpointConfiguration:
-    endpoints:
-    - bitbucketCloudEndpoint:
-        enableCache: false
-        manageHooks: false
-        repositoriesCacheDuration: 0
-        teamCacheDuration: 0
-  buildStepOperation:
-    enabled: false
-  extendedEmailPublisher:
-    adminRequiredForTemplateTesting: false
-    allowUnregisteredEnabled: false
-    charset: "UTF-8"
-    debugMode: false
-    defaultBody: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\r\n\r\nCheck\
-      \ console output at $BUILD_URL to view the results."
-    defaultContentType: "text/plain"
-    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
-    maxAttachmentSize: -1
-    maxAttachmentSizeMb: 0
-    precedenceBulk: false
-    useSsl: false
-    watchingEnabled: false
-  gitHubPluginConfig:
-    hookUrl: "http://localhost:32769/github-webhook/"
-  gitSCM:
-    createAccountBasedOnEmail: false
-  location:
-    adminAddress: "адрес еще не настроен <nobody@nowhere>"
-    url: "http://localhost:32769/"
-  mailer:
-    adminAddress: "адрес еще не настроен <nobody@nowhere>"
-    charset: "UTF-8"
-    useSsl: false
-  pollSCM:
-    pollingThreadCount: 10
-  timestamperConfig:
-    allPipelines: false
-    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
-    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
 tool:
   ant:
     defaultProperties:
-    - installSource:
-        installers:
-        - "antFromApache"
-  git:
-    installations:
-    - home: "git"
-      name: "Default"
-  gradle:
-    defaultProperties:
-    - installSource:
-        installers:
-        - "gradleInstaller"
-  jdk:
-    defaultProperties:
-    - installSource:
-        installers:
-        - jdkInstaller:
-            acceptLicense: false
-  maven:
-    defaultProperties:
-    - installSource:
-        installers:
-        - "maven"
-    installations:
-    - name: "Maven3"
-      properties:
       - installSource:
           installers:
-          - maven:
-              id: "3.6.1"
+            - "antFromApache"
+  git:
+    installations:
+      - home: "git"
+        name: "Default"
+  gradle:
+    defaultProperties:
+      - installSource:
+          installers:
+            - "gradleInstaller"
+  jdk:
+    defaultProperties:
+      - installSource:
+          installers:
+            - jdkInstaller:
+                acceptLicense: false
+  maven:
+    defaultProperties:
+      - installSource:
+          installers:
+            - "maven"
+    installations:
+      - name: "Maven3"
+        properties:
+          - installSource:
+              installers:
+                - maven:
+                    id: "3.6.1"
   pipelineMaven:
     triggerDownstreamUponResultAborted: false
     triggerDownstreamUponResultFailure: false
     triggerDownstreamUponResultNotBuilt: false
     triggerDownstreamUponResultSuccess: true
     triggerDownstreamUponResultUnstable: false
+jobs:
+  - script: >
+      pipelineJob('pipeline2355') {
+          definition {
+              cpsScm {
+                  scriptPath 'Jenkinsfile'
+                  scm {
+                    git {
+                        remote { url 'https://github.com/mkrzyzanowski/blog-001.git' }
+                        branch '*/docker-for-mac'
+                        extensions {}
+                    }
+                  }
+              }
+          }
+      }
