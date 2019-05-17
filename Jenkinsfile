@@ -6,7 +6,7 @@ node('master') {
     }
 
     stage('Run tests') {
-            withMaven(maven: 'Maven 3') {
+            withMaven(maven: 'Maven3') {
                     sh 'mvn clean install'
             }
     }
