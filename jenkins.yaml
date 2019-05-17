@@ -1,46 +1,21 @@
 jenkins:
+  systemMessage: "AutomatingGuy demo: configured automatically with JCasC plugin\n\n"
 tool:
-  ant:
-    defaultProperties:
-      - installSource:
-          installers:
-            - "antFromApache"
   git:
     installations:
       - home: "git"
         name: "Default"
-  gradle:
-    defaultProperties:
-      - installSource:
-          installers:
-            - "gradleInstaller"
-  jdk:
-    defaultProperties:
-      - installSource:
-          installers:
-            - jdkInstaller:
-                acceptLicense: false
   maven:
-    defaultProperties:
-      - installSource:
-          installers:
-            - "maven"
     installations:
-      - name: "Maven3"
+      - name: "Maven 3"
         properties:
           - installSource:
               installers:
                 - maven:
-                    id: "3.6.1"
-  pipelineMaven:
-    triggerDownstreamUponResultAborted: false
-    triggerDownstreamUponResultFailure: false
-    triggerDownstreamUponResultNotBuilt: false
-    triggerDownstreamUponResultSuccess: true
-    triggerDownstreamUponResultUnstable: false
+                    id: "3.5.4"
 jobs:
   - script: >
-      pipelineJob('pipeline2355') {
+      pipelineJob('pipeline1213') {
           definition {
               cpsScm {
                   scriptPath 'Jenkinsfile'
