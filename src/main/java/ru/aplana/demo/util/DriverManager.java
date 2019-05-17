@@ -48,13 +48,9 @@ public class DriverManager {
 				capabilities.setBrowserName("chrome");
 				capabilities.setVersion("73.0");
 				capabilities.setCapability("enableVNC", true);
-				capabilities.setCapability("enableVideo", true);
-				capabilities.setCapability("enableLog", true);
-				WebDriver driver2 = new RemoteWebDriver(
-						URI.create("http://selenoid.aplana.com:4445/wd/hub/").toURL(),
-						capabilities
-				);
-				driver = new RemoteWebDriver(
+				capabilities.setCapability("enableVideo", false);
+				capabilities.setCapability("enableLog", false);
+				WebDriver driver = new RemoteWebDriver(
 						URI.create("http://selenoid.aplana.com:4445/wd/hub/").toURL(),
 						capabilities
 				);
