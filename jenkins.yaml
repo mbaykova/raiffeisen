@@ -1,7 +1,7 @@
 jenkins:
   agentProtocols:
-    - "JNLP4-connect"
-    - "Ping"
+  - "JNLP4-connect"
+  - "Ping"
   authorizationStrategy:
     loggedInUsersCanDoAnything:
       allowAnonymousRead: false
@@ -26,15 +26,15 @@ jenkins:
       allowsSignup: false
       enableCaptcha: false
       users:
-        - id: "admin"
+      - id: "admin"
   slaveAgentPort: 50000
   updateCenter:
     sites:
-      - id: "default"
-        url: "https://updates.jenkins.io/update-center.json"
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
   views:
-    - all:
-        name: "all"
+  - all:
+      name: "all"
   viewsTabBar: "standard"
 security:
   apiToken:
@@ -48,11 +48,11 @@ security:
 unclassified:
   bitbucketEndpointConfiguration:
     endpoints:
-      - bitbucketCloudEndpoint:
-          enableCache: false
-          manageHooks: false
-          repositoriesCacheDuration: 0
-          teamCacheDuration: 0
+    - bitbucketCloudEndpoint:
+        enableCache: false
+        manageHooks: false
+        repositoriesCacheDuration: 0
+        teamCacheDuration: 0
   buildStepOperation:
     enabled: false
   extendedEmailPublisher:
@@ -89,24 +89,36 @@ unclassified:
 tool:
   ant:
     defaultProperties:
-      - installSource:
-          installers:
-            - "antFromApache"
+    - installSource:
+        installers:
+        - "antFromApache"
   git:
     installations:
-      - home: "git"
-        name: "Default"
+    - home: "git"
+      name: "Default"
   gradle:
     defaultProperties:
-      - installSource:
-          installers:
-            - "gradleInstaller"
+    - installSource:
+        installers:
+        - "gradleInstaller"
   jdk:
     defaultProperties:
+    - installSource:
+        installers:
+        - jdkInstaller:
+            acceptLicense: false
+  maven:
+    defaultProperties:
+    - installSource:
+        installers:
+        - "maven"
+    installations:
+    - name: "Maven3"
+      properties:
       - installSource:
           installers:
-            - jdkInstaller:
-                acceptLicense: false
+          - maven:
+              id: "3.6.1"
   pipelineMaven:
     triggerDownstreamUponResultAborted: false
     triggerDownstreamUponResultFailure: false
