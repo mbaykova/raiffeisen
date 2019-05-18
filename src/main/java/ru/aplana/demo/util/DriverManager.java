@@ -50,7 +50,7 @@ public class DriverManager {
 				capabilities.setCapability("enableVNC", true);
 				capabilities.setCapability("enableVideo", false);
 				capabilities.setCapability("enableLog", false);
-				WebDriver driver = new RemoteWebDriver(
+				driver = new RemoteWebDriver(
 						URI.create("http://selenoid.aplana.com:4445/wd/hub/").toURL(),
 						capabilities
 				);
