@@ -40,6 +40,7 @@ public class DriverManager {
 				options.addArguments("--disable-extensions"); // disabling extensions
 				options.addArguments("--disable-gpu"); // applicable to windows os only
 				options.addArguments("--disable-dev-shm-usage");
+				options.addArguments("--headless");
 				options.setExperimentalOption("useAutomationExtension", false);
 				driver = new ChromeDriver(options);
 				break;
