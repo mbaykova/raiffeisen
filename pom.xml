@@ -23,8 +23,9 @@
                 <version>2.19.1</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <forkCount>2</forkCount>
                     <includes>
-                        <include>**/CucumberRunner.java</include>
+                        <include>**/*.java</include>
                     </includes>
                     <argLine>
                         -Dfile.encoding=UTF-8 -Xmx1024m -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
