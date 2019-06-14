@@ -34,6 +34,10 @@ public class DriverManager {
 			case "chrome":
 				System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
 				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--no-sandbox");
+//				options.addArguments("disable-infobars"); // disabling infobars
+//				options.addArguments("--disable-extensions"); // disabling extensions
+				options.addArguments("--disable-dev-shm-usage");
 				options.addArguments("--headless");
 				options.addArguments("window-size=1024,768");
 				options.setExperimentalOption("useAutomationExtension", false);
