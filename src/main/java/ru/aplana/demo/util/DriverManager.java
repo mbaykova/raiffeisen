@@ -34,13 +34,8 @@ public class DriverManager {
 			case "chrome":
 				System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
 				ChromeOptions options = new ChromeOptions();
-				options.addArguments("--no-sandbox");
-				options.addArguments("start-maximized"); // open Browser in maximized mode
-				options.addArguments("disable-infobars"); // disabling infobars
-				options.addArguments("--disable-extensions"); // disabling extensions
-				options.addArguments("--disable-gpu"); // applicable to windows os only
-				options.addArguments("--disable-dev-shm-usage");
 				options.addArguments("--headless");
+				options.addArguments("window-size=1024,768");
 				options.setExperimentalOption("useAutomationExtension", false);
 				driver = new ChromeDriver(options);
 				break;
