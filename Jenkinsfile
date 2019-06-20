@@ -1,17 +1,30 @@
 #!groovy
 
-pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v $HOME/.m2:/root/.m2'
-        }
+node('master') {
+    stage('Checkout') {
+        checkout scm
     }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn clean'
-            }
-        }
+
+    stage('Run tests') {
+        try{
+                 withMaven(maven: 'Maven3') {
+                                sh 'mvn clean install'
+                        }
+        }  catch (e) {
+                     currentBuild.result = 'FAILURE'
+                     throw e
+         }finally {
+             stage('Reports') {
+                                allure([
+                                    includeProperties: false,
+                                    jdk: '',
+                                    properties: [],
+                                    reportBuildPolicy: 'ALWAYS',
+                                    results: [[path: 'target/allure-results']]
+                                ])
+                            }
+         }
+
     }
+
 }
