@@ -27,7 +27,7 @@
                         <include>**/CucumberRunner.java</include>
                     </includes>
                     <argLine>
-                        -Dfile.encoding=UTF-8 -Xmx1024m -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                      -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                     </argLine>
                     <reuseForks>false</reuseForks>
                     <systemProperties>
@@ -48,7 +48,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.8</version>
+                <version>2.10.0</version>
                 <executions>
                     <execution>
                         <id>allure-report</id>
@@ -58,21 +58,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <mainClass>ru.aplana.demo.util.FileConverter</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -84,9 +69,8 @@
         <file.encoding>UTF-8</file.encoding>
         <aspectj.version>1.8.10</aspectj.version>
         <compiler.version>1.8</compiler.version>
-        <selenium.version>3.8.0</selenium.version>
+        <selenium.version>3.14.0</selenium.version>
         <allure.version>2.7.0</allure.version>
-        <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
     <dependencies>
@@ -102,8 +86,8 @@
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber-jvm</artifactId>
-            <version>2.6.0</version>
+            <artifactId>allure-cucumber4-jvm</artifactId>
+            <version>2.12.1</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -111,27 +95,27 @@
             <version>4.12</version>
         </dependency>
         <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>1.2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>info.cukes</groupId>
+            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>1.2.5</version>
+            <version>4.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>4.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>4.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit4</artifactId>
+            <version>2.12.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-plugin-api</artifactId>
-            <version>3.6.0</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.jbehave</groupId>
-            <artifactId>jbehave-core</artifactId>
-            <version>4.3.5</version>
-        </dependency>
 
     </dependencies>
 

@@ -1,14 +1,13 @@
 package ru.aplana.demo.steps;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import ru.aplana.demo.pages.BasePageObject;
-import ru.aplana.demo.pages.DepositPage;
 import ru.aplana.demo.util.DriverManager;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static ru.aplana.demo.steps.BaseSteps.pageObject;
@@ -67,8 +66,8 @@ public class DepositSteps {
 
 
     @When("заполняются поля:")
-    public void fillFields(DataTable fields) throws Exception {
-        fields.asMap(String.class, String.class).forEach(
+    public void fillFields(Map<String,String> fields) {
+        fields.forEach(
                 (k, v) -> {
                     try {
                         fillField(k, v);
@@ -81,8 +80,8 @@ public class DepositSteps {
 
 
     @When("поля заполнены значениями:")
-    public void checkfillFields(DataTable fields) throws Exception {
-        fields.asMap(String.class, String.class).forEach(
+    public void checkfillFields(Map<String,String> fields) {
+        fields.forEach(
                 (k, v) -> {
                     try {
                         checkField(k, v);
