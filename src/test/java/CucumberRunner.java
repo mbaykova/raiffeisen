@@ -13,4 +13,7 @@ import org.junit.runner.RunWith;
                   "pretty",
                 "ru.aplana.demo.reporter.AllureReporter"})
 public class CucumberRunner {
+
+
+
 }
