@@ -1,3 +1,5 @@
+package ru.aplana.demo;
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.Test;
