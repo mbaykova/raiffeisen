@@ -23,6 +23,6 @@ def getTags()
     assert object instanceof Map
     String[] tags = object.items.testCaseKey
     tags.collect { "@$it" }.join(',')
-    echo tags.toString()
+
 }
-return this;
+return tags.toString();
