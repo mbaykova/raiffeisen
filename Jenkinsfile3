@@ -6,9 +6,7 @@ node('master') {
         checkout scm
     }
 
-    def externalMethod = load("getTags.groovy")
-    externalMethod()
-
-
+    def getTags = load("getTags.groovy")
+    getTags()
 
 }
