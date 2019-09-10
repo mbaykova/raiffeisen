@@ -7,7 +7,7 @@ node('master') {
     }
 
     def externalMethod = load("getTags.groovy")
-    externalMethod();
+    externalMethod()
 
 
 

@@ -1,7 +1,7 @@
 import groovy.json.JsonParserType
 import groovy.json.JsonSlurper
 
-def getTags
+def getTags()
 {
     def jiraHost = "http://localhost:8087"
     def testRunKey = "TEST-C1"
@@ -25,3 +25,4 @@ def getTags
     tags.collect { "@$it" }.join(',')
     echo tags.toString()
 }
+return this;
