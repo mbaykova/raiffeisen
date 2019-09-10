@@ -16,6 +16,7 @@ node('master') {
     echo externalCall("Steve")
 
     def getTags = load("getTags.groovy")
-    getTags.getTags()
 
+    TAG =  getTags.getTags()
+    echo "2312313" + TAG
 }
