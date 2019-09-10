@@ -1,6 +1,6 @@
 import groovy.json.JsonParserType
 import groovy.json.JsonSlurper
-
+@NonCPS
 def getTags()
 {
     def nullTrustManager = [
