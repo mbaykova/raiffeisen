@@ -27,7 +27,7 @@ node('master') {
     assert object instanceof Map
     String[] tags = object.items.testCaseKey
     tags.collect{"@$it"}.join(',')
-    echo tags
+    echo tags.toString()
 
 
 
