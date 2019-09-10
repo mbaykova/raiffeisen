@@ -22,8 +22,7 @@ def getTags()
     def object = jsonSlurper.parseText(response);
     assert object instanceof Map
     String[] tags = object.items.testCaseKey
-    tags.collect { "@$it" }.join(',')
-    return tags.toString();
+    return tags.collect { "@$it" }.join(',');
 
 }
 return this;
