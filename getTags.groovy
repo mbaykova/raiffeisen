@@ -5,6 +5,7 @@ def getTags()
 {
     @NonCPS
     def nullTrustManager = [
+            @NonCPS
             checkClientTrusted: { chain, authType ->  },
             checkServerTrusted: { chain, authType ->  },
             getAcceptedIssuers: { null }
