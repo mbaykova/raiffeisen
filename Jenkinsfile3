@@ -2,6 +2,12 @@
 
 node('master') {
 
+    parameters {
+        stringParam(
+                description: '',
+                name: 'TAG'
+        )
+    }
     stage('Checkout') {
         checkout scm
     }
