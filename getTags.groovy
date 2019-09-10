@@ -31,7 +31,7 @@ def getTags()
     def baseURL = "${jiraHost}/rest/atm/1.0/testrun/${testRunKey}";
 
 
-    def url = new URL(baseURL);
+    url = new URL(baseURL);
 
     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
     connection.setRequestMethod("GET");
