@@ -3,6 +3,27 @@ import groovy.json.JsonSlurper
 
 def getTags()
 {
+    def nullTrustManager = [
+            checkClientTrusted: { chain, authType ->  },
+            checkServerTrusted: { chain, authType ->  },
+            getAcceptedIssuers: { null }
+    ]
+
+    def nullHostnameVerifier = [
+            verify: { hostname, session ->
+                //true
+                hostname.startsWith('yuml.me')
+            }
+    ]
+
+    javax.net.ssl.SSLContext sc = javax.net.ssl.SSLContext.getInstance("SSL")
+    sc.init(null, [nullTrustManager as  javax.net.ssl.X509TrustManager] as  javax.net.ssl.X509TrustManager[], null)
+    javax.net.ssl.HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory())
+    javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(nullHostnameVerifier as javax.net.ssl.HostnameVerifier)
+
+
+    def url = new URL('https://mysecureserver')
+    url.openStream()
     def jiraHost = "http://localhost:8087"
     def testRunKey = "TEST-C1"
     def username = "admin"
