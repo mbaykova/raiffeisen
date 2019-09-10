@@ -1,6 +1,6 @@
 #!groovy
 pipeline{
-    agent label node
+    agent none
     parameters {
         string(
                 description: '',
@@ -10,6 +10,9 @@ pipeline{
 
     stages{
         stage('Run'){
+            agent {
+                label node
+            }
             steps{
                 script{
                     def externalMethod = load("externalMethod.groovy")
