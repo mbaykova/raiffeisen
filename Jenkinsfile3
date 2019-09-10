@@ -1,6 +1,11 @@
 #!groovy
 
 node('master') {
+
+    stage('Checkout') {
+        checkout scm
+    }
+
     def externalMethod = load("externalMethod.groovy")
 
     // Call the method we defined in externalMethod.
@@ -12,9 +17,7 @@ node('master') {
     // We can just run it with "externalCall(...)" since it has a call method.
     externalCall("Steve")
 
-    stage('Checkout') {
-        checkout scm
-    }
+
 
     stage('Run tests') {
         try{
