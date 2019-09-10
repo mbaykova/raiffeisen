@@ -1,14 +1,16 @@
 import groovy.json.JsonParserType
 import groovy.json.JsonSlurper
-@NonCPS
+
 def getTags()
 {
+    @NonCPS
     def nullTrustManager = [
             checkClientTrusted: { chain, authType ->  },
             checkServerTrusted: { chain, authType ->  },
             getAcceptedIssuers: { null }
     ]
 
+    @NonCPS
     def nullHostnameVerifier = [
             verify: { hostname, session ->
                 //true
