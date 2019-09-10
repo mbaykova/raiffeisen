@@ -1,3 +1,4 @@
+
 node {
     // Load the file 'externalMethod.groovy' from the current directory, into a variable called "externalMethod".
     def externalMethod = load("externalMethod.groovy")
@@ -7,7 +8,7 @@ node {
 
     // Now load 'externalCall.groovy'.
     def externalCall = load("externalCall.groovy")
-
+    echo externalCall("Steve")
     // We can just run it with "externalCall(...)" since it has a call method.
-    externalCall("Steve")
+   // externalCall("Steve")
 }

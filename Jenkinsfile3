@@ -6,10 +6,10 @@ node('master') {
         checkout scm
     }
 
-    def externalMethod = load("externalMethod.groovy")
-
-    // Call the method we defined in externalMethod.
-    externalMethod.lookAtThis("Steve")
+//    def externalMethod = load("externalMethod.groovy")
+//
+//    // Call the method we defined in externalMethod.
+//    externalMethod.lookAtThis("Steve")
 
     // Now load 'externalCall.groovy'.
     def externalCall = load("externalCall.groovy")
