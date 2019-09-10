@@ -1,6 +1,6 @@
 #!groovy
 pipeline{
-    agent label NODE_LABEL
+    agent label node
     parameters {
         string(
                 description: '',
