@@ -1,28 +1,31 @@
 #!groovy
-
-node('master') {
-
+pipeline{
     parameters {
         stringParam(
                 description: '',
                 name: 'TAG'
         )
     }
-    stage('Checkout') {
-        checkout scm
+
+    node('master') {
+
+
+        stage('Checkout') {
+            checkout scm
+        }
+
+        def externalMethod = load("externalMethod.groovy")
+
+        // Call the method we defined in externalMethod.
+        externalMethod.lookAtThis("Steve")
+
+        // Now load 'externalCall.groovy'.
+        def externalCall = load("externalCall.groovy")
+        echo externalCall("Steve")
+
+        def getTags = load("getTags.groovy")
+
+        TAG =  getTags.getTags()
+        echo "2312313" + TAG
     }
-
-    def externalMethod = load("externalMethod.groovy")
-
-    // Call the method we defined in externalMethod.
-    externalMethod.lookAtThis("Steve")
-
-    // Now load 'externalCall.groovy'.
-    def externalCall = load("externalCall.groovy")
-    echo externalCall("Steve")
-
-    def getTags = load("getTags.groovy")
-
-    TAG =  getTags.getTags()
-    echo "2312313" + TAG
 }
