@@ -9,7 +9,7 @@ pipeline{
     }
 
     stages{
-        stage(Run){
+        stage('Run'){
             steps{
                 script{
                     def externalMethod = load("externalMethod.groovy")
