@@ -26,8 +26,8 @@ pipeline{
 
                     def getTags = load("getTags.groovy")
 
-                    TAG =  getTags.getTags()
-                    echo "2312313" + TAG
+                    getTags.getTags()
+                    echo "2312313" + customTags
                 }
             }
         }
