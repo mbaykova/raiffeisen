@@ -30,7 +30,7 @@ pipeline{
 //                    echo "2312313" + customTags
 //                }
                 script{
-                    def response = sh '  curl \\\n' +
+                    def response = bat '  curl \\\n' +
                             '                  --header "Authorization: Basic YWRtaW46YWRtaW4=" \\\n' +
                             '                  --request GET \\\n' +
                             '                  http://localhost:8087/rest/atm/1.0/testrun/TEST-C1'
