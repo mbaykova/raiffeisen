@@ -53,7 +53,9 @@ def getTags()
         sc.getSocketFactory()
         String[] tags = object.items.testCaseKey
         return tags.collect { "@$it" }.join(',');
-    } catch (Exception e) { }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 
 
 
