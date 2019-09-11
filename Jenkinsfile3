@@ -14,20 +14,27 @@ pipeline{
                 label node
             }
             steps{
+//                script{
+//                    def externalMethod = load("externalMethod.groovy")
+//
+//                    // Call the method we defined in externalMethod.
+//                    externalMethod.lookAtThis("Steve")
+//
+//                    // Now load 'externalCall.groovy'.
+//                    def externalCall = load("externalCall.groovy")
+//                    echo externalCall("Steve")
+//
+//                    def getTags = load("getTags.groovy")
+//
+//                    def customTags = getTags.getTags()
+//                    echo "2312313" + customTags
+//                }
                 script{
-                    def externalMethod = load("externalMethod.groovy")
-
-                    // Call the method we defined in externalMethod.
-                    externalMethod.lookAtThis("Steve")
-
-                    // Now load 'externalCall.groovy'.
-                    def externalCall = load("externalCall.groovy")
-                    echo externalCall("Steve")
-
-                    def getTags = load("getTags.groovy")
-
-                    def customTags = getTags.getTags()
-                    echo "2312313" + customTags
+                    def response = sh '  curl \\\n' +
+                            '                  --header "Authorization: Basic YWRtaW46YWRtaW4=" \\\n' +
+                            '                  --request GET \\\n' +
+                            '                  http://localhost:8087/rest/atm/1.0/testrun/TEST-C1'
+                    echo response
                 }
             }
         }
