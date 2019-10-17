@@ -23,27 +23,27 @@ public class DepositPage extends BasePageObject {
 	@FieldName(name = "Оставить заявку")
 	public WebElement requestBtn;
 
-	@FindBy(xpath = "//*[text()='Фамилия']/parent::div/input")
+	@FindBy(xpath = "//*[text()='Фамилия']/ancestor::div[@class='form-group text-field']//input")
 	@FieldName(name = "Фамилия")
 	public WebElement surname;
 
-	@FindBy(xpath = "//*[text()='Имя']/parent::div/input")
+	@FindBy(xpath = "//*[text()='Имя']/ancestor::div[@class='form-group text-field']//input")
 	@FieldName(name = "Имя")
 	public WebElement name;
 
-	@FindBy(xpath = "//*[text()='Отчество']/parent::div/input")
+	@FindBy(xpath = "//*[text()='Отчество']/ancestor::div[@class='form-group text-field']//input")
 	@FieldName(name = "Отчество")
 	public WebElement middleName;
 
-	@FindBy(xpath = "//*[text()='Дата рождения']/parent::div/input")
+	@FindBy(xpath = "//*[text()='Дата рождения']/ancestor::div[@class='form-group text-field']//input")
 	@FieldName(name = "Дата рождения")
 	public WebElement birthDate;
 
-	@FindBy(xpath = "//*[text()='Телефон']/parent::div/input")
+	@FindBy(xpath = "//*[text()='Телефон']/ancestor::div[contains(@class,'form-group text-field')]//input")
 	@FieldName(name = "Телефон")
 	public WebElement phone;
 
-	@FindBy(xpath = "//*[text()='Город']/parent::div/div")
+	@FindBy(xpath = "//*[text()='Город']/ancestor::div[@class='form-group text-field']/div[@role]")
 	@FieldName(name = "Город")
 	public WebElement city;
 

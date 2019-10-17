@@ -33,7 +33,7 @@ public class BaseSteps {
 
 	@After
 	public void afterMethod() {
-		DriverManager.quitDriver();
+	//	DriverManager.quitDriver();
 	}
 
 
