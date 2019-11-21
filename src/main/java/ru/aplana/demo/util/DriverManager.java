@@ -40,20 +40,20 @@ public class DriverManager {
 
 		switch (properties.getProperty("browser")) {
 			case "chrome":
-//				System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
-//				ChromeOptions options = new ChromeOptions();
-//				options.setExperimentalOption("useAutomationExtension", false);
-//				driver = new ChromeDriver(options);
-				DesiredCapabilities capabilities = new DesiredCapabilities();
-				capabilities.setBrowserName("chrome");
-				capabilities.setVersion("73.0");
-				capabilities.setCapability("enableVNC", true);
-				capabilities.setCapability("enableVideo", false);
-				capabilities.setCapability("enableLog", false);
-				driver = new RemoteWebDriver(
-						URI.create("http://selenoid.aplana.com:4445/wd/hub/").toURL(),
-						capabilities
-				);
+				System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
+				ChromeOptions options = new ChromeOptions();
+				options.setExperimentalOption("useAutomationExtension", false);
+				driver = new ChromeDriver(options);
+//				DesiredCapabilities capabilities = new DesiredCapabilities();
+//				capabilities.setBrowserName("chrome");
+//				capabilities.setVersion("73.0");
+//				capabilities.setCapability("enableVNC", true);
+//				capabilities.setCapability("enableVideo", false);
+//				capabilities.setCapability("enableLog", false);
+//				driver = new RemoteWebDriver(
+//						URI.create("http://selenoid.aplana.com:4445/wd/hub/").toURL(),
+//						capabilities
+//				);
 				break;
 			case "firefox":
 				System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver"));
