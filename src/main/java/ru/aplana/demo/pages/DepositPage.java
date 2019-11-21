@@ -32,15 +32,15 @@ public class DepositPage extends BasePageObject {
 	@FieldName(name = "Отчество")
 	public WebElement middleName;
 
-	@FindBy(xpath = "//*[text()='Дата рождения']/parent::div/input")
+	@FindBy(xpath = "//*[text()='Дата рождения']/ancestor::div/input")
 	@FieldName(name = "Дата рождения")
 	public WebElement birthDate;
 
-	@FindBy(xpath = "//*[text()='Телефон']/parent::div/input")
+	@FindBy(xpath = "//*[text()='Телефон']/ancestor::div/input")
 	@FieldName(name = "Телефон")
 	public WebElement phone;
 
-	@FindBy(xpath = "//*[text()='Город']/parent::div/div")
+	@FindBy(xpath = "//*[text()='Город']/ancestor::div[@class='form-group text-field']/div[2]")
 	@FieldName(name = "Город")
 	public WebElement city;
 
@@ -61,6 +61,10 @@ public class DepositPage extends BasePageObject {
 	@FindBy(xpath = "//*[contains(text(),'подтверждаю')]/..")
 	@FieldName(name = "Я подтверждаю")
 	public WebElement acceptCheckBox;
+
+	@FindBy(xpath = "//*[text()='Фамилия, Имя и Отчество']/ancestor::div[contains(@class,'form-group')]//input[1]")
+	@FieldName(name = "Фамилия, Имя и Отчество")
+	public WebElement fio;
 
 	@Override
 	public WebElement getField(String name) throws Exception {

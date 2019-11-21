@@ -4,7 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.util.Properties;
 
 /**
@@ -16,7 +20,11 @@ public class DriverManager {
 
 	public static WebDriver getDriver(){
 		if (driver == null){
-			driver = createDriver();
+			try {
+				driver = createDriver();
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
 		}
 		return driver;
 	}
@@ -28,14 +36,24 @@ public class DriverManager {
 		}
 	}
 
-	private static WebDriver createDriver() {
+	private static WebDriver createDriver() throws MalformedURLException {
 
 		switch (properties.getProperty("browser")) {
 			case "chrome":
-				System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
-				ChromeOptions options = new ChromeOptions();
-				options.setExperimentalOption("useAutomationExtension", false);
-				driver = new ChromeDriver(options);
+//				System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
+//				ChromeOptions options = new ChromeOptions();
+//				options.setExperimentalOption("useAutomationExtension", false);
+//				driver = new ChromeDriver(options);
+				DesiredCapabilities capabilities = new DesiredCapabilities();
+				capabilities.setBrowserName("chrome");
+				capabilities.setVersion("73.0");
+				capabilities.setCapability("enableVNC", true);
+				capabilities.setCapability("enableVideo", false);
+				capabilities.setCapability("enableLog", false);
+				driver = new RemoteWebDriver(
+						URI.create("http://selenoid.aplana.com:4445/wd/hub/").toURL(),
+						capabilities
+				);
 				break;
 			case "firefox":
 				System.setProperty("webdriver.gecko.driver", properties.getProperty("webdriver.gecko.driver"));
