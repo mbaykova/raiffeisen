@@ -18,33 +18,33 @@ public class DepositSteps {
 
 
     @When("поле \"(.*)\" заполняется значением \"(.*)\"")
-    public void fillField(String name, String value) throws Exception {
+    public void fillField(String name, String value) {
         depositPage.fillField(name, value);
     }
 
     @When("значение поля \"(.*)\" равно \"(.*)\"")
-    public void checkField(String name, String value) throws Exception {
+    public void checkField(String name, String value) {
         Assert.assertEquals(value, depositPage.getField(name).getAttribute("value"));
     }
 
     @When("поле \"(.*)\" доступно")
-    public void checkIsEnabled(String name) throws Exception {
+    public void checkIsEnabled(String name) {
         Assert.assertTrue("Кнопка - "+ name +" не активна", depositPage.getField(name).isEnabled());
     }
 
     @When("выполнено нажатие на \"(.*)\"")
-    public void click(String name) throws Exception {
+    public void click(String name) {
         depositPage.click(name);
     }
 
     @When("выпадающий список \"(.*)\" заполняется значением \"(.*)\"")
-    public void selectInput(String field, String value) throws Exception {
+    public void selectInput(String field, String value) {
         depositPage.getField(field).click();
         depositPage.selectInput(depositPage.getField(field), value);
     }
 
     @When("поле \"(.*)\" присутствует")
-    public void checkFieldIsPresent(String name)throws Exception{
+    public void checkFieldIsPresent(String name) {
         try {
             DriverManager.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             Assert.assertTrue(String.format("Элемент [%s] не видимый", name), depositPage.getField(name).isDisplayed());
@@ -58,28 +58,20 @@ public class DepositSteps {
 
 
     @When("заполняются поля:")
-    public void fillFields(Map<String,String> fields) throws Exception {
+    public void fillFields(Map<String,String> fields) {
         fields.forEach(
             (k, v) -> {
-                try {
                     fillField(k, v);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         );
     }
 
 
     @When("поля заполнены значениями:")
-    public void checkfillFields(Map<String,String> fields) throws Exception {
+    public void checkfillFields(Map<String,String> fields) {
         fields.forEach(
             (k, v) -> {
-                try {
                     checkField(k, v);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         );
     }

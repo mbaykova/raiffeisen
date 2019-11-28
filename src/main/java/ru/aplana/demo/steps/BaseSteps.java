@@ -6,9 +6,16 @@ package ru.aplana.demo.steps;
 
 
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import io.qameta.allure.Allure;
+import io.qameta.allure.AllureLifecycle;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import ru.aplana.demo.pages.BasePageObject;
 import ru.aplana.demo.util.DriverManager;
 import ru.aplana.demo.util.TestProperties;
 
@@ -32,8 +39,16 @@ public class BaseSteps {
 	}
 
 	@After
-	public void afterMethod() {
-	//	DriverManager.quitDriver();
+	public void afterMethod(Scenario scenario) {
+		if(scenario.isFailed()){
+			takeScreenshot();
+		}
+		DriverManager.quitDriver();
+	}
+
+	@Attachment(type = "image/png", value = "Скриншот в момент ошибки")
+	public static byte[] takeScreenshot() {
+		return ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
 	}
 
 

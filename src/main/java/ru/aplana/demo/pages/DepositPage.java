@@ -1,5 +1,6 @@
 package ru.aplana.demo.pages;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -23,27 +24,27 @@ public class DepositPage extends BasePageObject {
 	@FieldName(name = "Оставить заявку")
 	public WebElement requestBtn;
 
-	@FindBy(xpath = "//*[text()='Фамилия']/ancestor::div[@class='form-group text-field']//input")
+	@FindBy(xpath = "//*[text()='Фамилия']/parent::div/input")
 	@FieldName(name = "Фамилия")
 	public WebElement surname;
 
-	@FindBy(xpath = "//*[text()='Имя']/ancestor::div[@class='form-group text-field']//input")
+	@FindBy(xpath = "//*[text()='Имя']/parent::div/input")
 	@FieldName(name = "Имя")
 	public WebElement name;
 
-	@FindBy(xpath = "//*[text()='Отчество']/ancestor::div[@class='form-group text-field']//input")
+	@FindBy(xpath = "//*[text()='Отчество']/parent::div/input")
 	@FieldName(name = "Отчество")
 	public WebElement middleName;
 
-	@FindBy(xpath = "//*[text()='Дата рождения']/ancestor::div[@class='form-group text-field']//input")
+	@FindBy(xpath = "//*[text()='Дата рождения']/ancestor::div/input")
 	@FieldName(name = "Дата рождения")
 	public WebElement birthDate;
 
-	@FindBy(xpath = "//*[text()='Телефон']/ancestor::div[contains(@class,'form-group text-field')]//input")
+	@FindBy(xpath = "//*[text()='Телефон']/ancestor::div/input")
 	@FieldName(name = "Телефон")
 	public WebElement phone;
 
-	@FindBy(xpath = "//*[text()='Город']/ancestor::div[@class='form-group text-field']/div[@role]")
+	@FindBy(xpath = "//*[text()='Город']/ancestor::div[@class='form-group text-field']/div[2]")
 	@FieldName(name = "Город")
 	public WebElement city;
 
@@ -65,19 +66,22 @@ public class DepositPage extends BasePageObject {
 	@FieldName(name = "Я подтверждаю")
 	public WebElement acceptCheckBox;
 
+	@FindBy(xpath = "//*[text()='Фамилия, Имя и Отчество']/ancestor::div[contains(@class,'form-group')]//input[2]")
+	@FieldName(name = "Фамилия, Имя и Отчество")
+	public WebElement fio;
 
-
-	public void fillField(String name, String value) throws Exception {
+	@Step("поле {0} заполняется значением {1}")
+	public void fillField(String name, String value) {
 		WebElement element = getField(name);
 		fillField(element, value);
 	}
 
-	public void click(String name) throws Exception {
+	public void click(String name) {
 		WebElement element = getField(name);
 		click(element);
 	}
 
-	public WebElement getField(String name) throws Exception {
+	public WebElement getField(String name) {
 		WebElement element = null;
 		switch (name) {
 			case "Оставить заявку":
@@ -85,6 +89,9 @@ public class DepositPage extends BasePageObject {
 				break;
 			case "Фамилия":
 				element = surname;
+				break;
+			case "Фамилия, Имя и Отчество":
+				element = fio;
 				break;
 			case "Имя":
 				element = this.name;
