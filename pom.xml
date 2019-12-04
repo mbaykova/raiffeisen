@@ -24,7 +24,7 @@
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
-                        <include>**/CucumberRunner.java</include>
+                        <include>**/MyStepsTest.java</include>
                     </includes>
                     <argLine>
                         -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar

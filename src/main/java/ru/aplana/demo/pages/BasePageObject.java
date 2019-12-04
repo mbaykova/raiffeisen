@@ -29,7 +29,7 @@ public class BasePageObject {
 
 	public void fillField(WebElement field, String value){
 		JavascriptExecutor js = (JavascriptExecutor) DriverManager.getDriver();
-		js.executeScript("return arguments[0].style.border='1px solid magenta';", field);
+		js.executeScript("return arguments[0].style.border='5px solid magenta';", field);
 		field.clear();
 		field.sendKeys(value);
 		js.executeScript("return arguments[0].style.border='1px solid black';", field);
