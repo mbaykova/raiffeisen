@@ -8,7 +8,7 @@ node('mbaykova2') {
     stage('Run tests') {
         try{
                  withMaven(maven: 'Maven3') {
-                                bat 'mvn clean install'
+                                bat 'mvn clean -Dusername=${username} -Dpassword=${password}  install'
                         }
         }  catch (e) {
                      currentBuild.result = 'FAILURE'
