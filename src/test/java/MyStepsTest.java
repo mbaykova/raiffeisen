@@ -18,8 +18,8 @@ public class MyStepsTest extends BaseSteps {
 
     @Test
     public void testMethod() throws Exception {
-        System.out.println("username");
-        System.out.println("password");
+        System.out.println(System.getProperty("username"));
+        System.out.println(System.getProperty("password"));
 //        HashMap<String, String> testData = new HashMap<>();
 //        testData.put("Фамилия", "Иванов");
 //        testData.put("Имя", "Иван");
