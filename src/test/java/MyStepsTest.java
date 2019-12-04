@@ -5,6 +5,7 @@ import ru.aplana.demo.steps.DepositListSteps;
 import ru.aplana.demo.steps.DepositSteps;
 import ru.aplana.demo.steps.MainSteps;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -18,9 +19,9 @@ public class MyStepsTest extends BaseSteps {
 
     @Test
     public void testMethod() throws Exception {
-        String test = System.getProperty("username");
+        String test = System.getProperty("username").toString();
         String test2 = System.getProperty("password");
-        System.out.println(test + test2);
+        System.out.println(Arrays.toString(System.getProperty("username").toCharArray()) + test2);
 //        HashMap<String, String> testData = new HashMap<>();
 //        testData.put("Фамилия", "Иванов");
 //        testData.put("Имя", "Иван");
