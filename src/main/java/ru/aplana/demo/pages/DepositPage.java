@@ -36,11 +36,11 @@ public class DepositPage extends BasePageObject {
 	@FieldName(name = "Отчество")
 	public WebElement middleName;
 
-	@FindBy(xpath = "//*[text()='Дата рождения']/ancestor::div/input")
+	@FindBy(xpath = "//*[text()='Дата рождения']/ancestor::div[contains(@class,'form-group')]//input")
 	@FieldName(name = "Дата рождения")
 	public WebElement birthDate;
 
-	@FindBy(xpath = "//*[text()='Телефон']/ancestor::div/input")
+	@FindBy(xpath = "//*[text()='Телефон']/ancestor::div[contains(@class,'form-group')]//input")
 	@FieldName(name = "Телефон")
 	public WebElement phone;
 
@@ -48,7 +48,7 @@ public class DepositPage extends BasePageObject {
 	@FieldName(name = "Город")
 	public WebElement city;
 
-	@FindBy(xpath = "//*[text()='Отделение банка']/parent::div/div")
+	@FindBy(xpath = "//*[text()='Отделение банка']/ancestor::div[contains(@class,'form-group text-field')]")
 	@FieldName(name = "Отделение банка")
 	public WebElement bank;
 
@@ -60,6 +60,9 @@ public class DepositPage extends BasePageObject {
 	@FieldName(name = "Осталось заполнить Телефон")
 	public WebElement notFilledField;
 
+	@FindBy(xpath = "//*[text()='Код из СМС']/ancestor::div[contains(@class,'form-group')]//input")
+	@FieldName(name = "Код из СМС")
+	public WebElement smsCode;
 
 
 	@FindBy(xpath = "//*[contains(text(),'подтверждаю')]/..")
@@ -69,6 +72,10 @@ public class DepositPage extends BasePageObject {
 	@FindBy(xpath = "//*[text()='Фамилия, Имя и Отчество']/ancestor::div[contains(@class,'form-group')]//input[2]")
 	@FieldName(name = "Фамилия, Имя и Отчество")
 	public WebElement fio;
+
+	@FindBy(xpath = "//*[text()='Вперёд']")
+	@FieldName(name = "Вперёд")
+	public WebElement nextBtn;
 
 	@Step("поле {0} заполняется значением {1}")
 	public void fillField(String name, String value) {
@@ -119,6 +126,12 @@ public class DepositPage extends BasePageObject {
 				break;
 			case "Я подтверждаю":
 				element = acceptCheckBox;
+				break;
+			case "Вперёд":
+				element = nextBtn;
+				break;
+			case "Код из СМС":
+				element = smsCode;
 				break;
 			default:
 				Assert.fail("Не объявлен элемент с наименованием " + name);
